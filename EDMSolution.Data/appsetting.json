@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "EDMSolutionDb": "Server=.;Database=EDMSolution;Trusted_Connection=True;"
+  }
+}
