@@ -11,8 +11,6 @@ namespace EDMSolution.Data.Entities
     {
         public int ID { set; get; }
         public string Code { set; get; }
-        public string Image { set; get; }
-        public string MoreImage { set; get; }
         public decimal PromationPrice { set; get; }
         public bool IncludedVAT { set; get; }
         public int Quantity { set; get; }
@@ -31,6 +29,7 @@ namespace EDMSolution.Data.Entities
         public List<Cart> Carts { set; get; }
         public List<OrderDetail> OrderDetails { set; get; }
         public ProductCategory ProductCategory { set; get; }
+        public List<ProductImage> ProductImages { set; get; }
 
     }
 }

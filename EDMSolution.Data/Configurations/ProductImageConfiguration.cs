@@ -9,15 +9,14 @@ using System.Threading.Tasks;
 
 namespace EDMSolution.Data.Configurations
 {
-    public class AppConfiguration : IEntityTypeConfiguration<AppConfig>
+    public class ProductImageConfiguration : IEntityTypeConfiguration<ProductImage>
     {
-        public void Configure(EntityTypeBuilder<AppConfig> builder)
+        public void Configure(EntityTypeBuilder<ProductImage> builder)
         {
-            builder.ToTable("Appconfigs");
+            builder.ToTable("ProductImages");
             builder.HasKey(x => x.ID);
-            //Tự tăng
             builder.Property(x => x.ID).UseIdentityColumn();
-            builder.Property(x => x.Name).IsRequired(true);
+            builder.HasOne(x => x.Product).WithMany(x => x.ProductImages).HasForeignKey(x => x.ProductID);
         }
     }
 }

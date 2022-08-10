@@ -43,6 +43,7 @@ namespace EDMSolution.Data.EF
             modelBuilder.ApplyConfiguration(new ProductCategoryConfiguration());
             modelBuilder.ApplyConfiguration(new ProductConfiguration());
             modelBuilder.ApplyConfiguration(new ProductTranslationConfiguration());
+            modelBuilder.ApplyConfiguration(new ProductImageConfiguration());
             modelBuilder.ApplyConfiguration(new PromotionConfiguration());
             modelBuilder.ApplyConfiguration(new SlideConfiguration());
             modelBuilder.ApplyConfiguration(new TagConfiguration());

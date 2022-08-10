@@ -1,11 +1,12 @@
 ﻿using EDMSolution.Data.Enums;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EDMSolution.Application.Catalog.Products.Dtos
+namespace EDMSolution.ViewModels
 {
     public class ProductCreateRequest
     {
@@ -32,5 +33,6 @@ namespace EDMSolution.Application.Catalog.Products.Dtos
         public int ViewCount { set; get; }
         public DateTime TopHot { set; get; }
         public int LanguageID { set; get; }
+        public IFormFile ThumbnailImage { set; get; }
     }
 }

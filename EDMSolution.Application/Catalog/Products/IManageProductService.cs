@@ -1,5 +1,5 @@
-﻿using EDMSolution.Application.Catalog.Products.Dtos;
-using EDMSolution.Application.Dtos;
+﻿using EDMSolution.ViewModels;
+using EDMSolution.ViewModels.Catalog.Products.Manage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +16,6 @@ namespace EDMSolution.Application.Catalog.Products
         Task<bool> UpdatePrice(int productId, decimal newPrice);
         Task AddViewCount(int productId);
         Task<int> Delete(int productId);
-        Task<List<ProductViewModel>> GetAll();
         Task<PagedResult<ProductViewModel>> GetAllPaging(GetProductPagingRequest request);
     }
 }

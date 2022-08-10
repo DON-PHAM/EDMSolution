@@ -14,8 +14,7 @@ namespace EDMSolution.Data.Configurations
         public void Configure(EntityTypeBuilder<Product> builder)
         {
             builder.ToTable("products");
-            builder.HasKey(x => x.Id);
-            builder.Property(x => x.Name).IsRequired(true);
+            builder.HasKey(x => x.ID);
             builder.Property(x => x.Price).IsRequired();
         }
     }

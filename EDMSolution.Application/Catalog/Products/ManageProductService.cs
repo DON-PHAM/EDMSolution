@@ -1,11 +1,16 @@
-﻿using EDMSolution.Application.Catalog.Products.Dtos;
-using EDMSolution.Application.Dtos;
+﻿using EDMSolution.Application.Common;
 using EDMSolution.Data.EF;
 using EDMSolution.Data.Entities;
 using EDMSolution.Utilities.Exceptions;
+using EDMSolution.ViewModels;
+using EDMSolution.ViewModels.Catalog.Products.Manage;
+using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,9 +19,11 @@ namespace EDMSolution.Application.Catalog.Products
     public class ManageProductService : IManageProductService
     {
         private readonly EDMDbContext _context;
-        public ManageProductService(EDMDbContext context)
+        private readonly IStorageService _storageService;
+        public ManageProductService(EDMDbContext context, IStorageService storageService)
         {
             _context = context;
+            _storageService = storageService;
         }
 
         public async Task AddViewCount(int productId)
@@ -51,28 +58,56 @@ namespace EDMSolution.Application.Catalog.Products
             _context.Products.Remove(product);
             return await _context.SaveChangesAsync();
         }
-
-        public async Task<List<ProductViewModel>>  GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<PagedResult<ProductViewModel>> GetAllPaging(GetProductPagingRequest request)
+        public async Task<PagedResult<ProductViewModel>> GetAllPaging(GetProductPagingRequest request)
         {
             var query = from p in _context.Products
                         join pt in _context.ProductTranslations on p.ID equals pt.ProductID
-                        select p;
-                        
+                        select new { p , pt};
+            if (!string.IsNullOrEmpty(request.keyword))
+                query = query.Where(x => x.pt.Name.Contains(request.keyword));
+            int totalRow = await query.CountAsync();
+            var data = await query.Skip((request.PageIndex - 1) * request.PageSize)
+                        .Take(request.PageSize)
+                        .Select(x =>new ProductViewModel() { 
+                            ID = x.p.ID,
+                            Name = x.pt.Name,
+                            Description = x.pt.Description,
+                            LanguageID = x.pt.LanguageID
+                        }).ToListAsync();
+            var pageResult = new PagedResult<ProductViewModel>()
+            {
+                TotalRecord = totalRow,
+                Items = data,
+            };
+            return pageResult;
         }
 
         public async Task<int> Update(ProductUpdateRequest request)
         {
-            throw new NotImplementedException();
+            var product = await _context.Products.FindAsync(request.ID);
+            var productTranslation = await _context.ProductTranslations.FirstOrDefaultAsync(x => x.ProductID == request.ID && x.LanguageID == request.LanguageID);
+            if (product == null || productTranslation == null) throw new EDMException($"Cannot find a product with ID: {request.ID}");
+            productTranslation.Name = request.Name;
+            productTranslation.MetaKeywords = request.MetaKeywords;
+            productTranslation.MetaDescription = request.MetaDescription;
+            productTranslation.Description = request.Description;
+            return await _context.SaveChangesAsync();
         }
 
-        public Task<bool> UpdatePrice(int productId, decimal newPrice)
+        public async Task<bool> UpdatePrice(int productId, decimal newPrice)
         {
-            throw new NotImplementedException();
+            var product = await _context.Products.FindAsync(productId);
+            if (product == null) throw new EDMException($"Cannot find a product with ID:{productId}");
+            product.Price = newPrice;
+            return await _context.SaveChangesAsync() > 0;
+        }
+
+        private async Task<string> SaveFile(IFormFile file)
+        {
+            var originalFileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+            var fileName = $"{Guid.NewGuid()}{Path.GetExtension(originalFileName)}";
+            await _storageService.SaveFileAsync(file.OpenReadStream(),fileName);
+            return fileName;
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EDMSolution.Application.Catalog.Products.Dtos
+namespace EDMSolution.ViewModels
 {
     public class ProductViewModel
     {
@@ -34,6 +34,7 @@ namespace EDMSolution.Application.Catalog.Products.Dtos
         public string Description { set; get; }
         public string MetaKeywords { set; get; }
         public string MetaDescription { set; get; }
+        public int LanguageID { set; get; }
         public Product Product { set; get; }
         public Language Language { set; get; }
     }

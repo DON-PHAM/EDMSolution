@@ -22,6 +22,6 @@ namespace EDMSolution.Data.Entities
         public Status Status { set; get; }
         
         
-        public List<Order> Orders { set;get }
+        public List<Order> Orders { set; get; }
     }
 }
