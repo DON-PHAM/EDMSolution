@@ -12,5 +12,6 @@ namespace EDMSolution.Application.Catalog.Products
     public interface IPublicProductService
     {
         Task<PagedResult<ProductViewModel>> GetAllByCategoryId(GetProductPagingRequest request);
+        Task<List<ProductViewModel>> GetAll();
     }
 }

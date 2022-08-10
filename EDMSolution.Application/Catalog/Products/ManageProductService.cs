@@ -3,6 +3,7 @@ using EDMSolution.Data.EF;
 using EDMSolution.Data.Entities;
 using EDMSolution.Utilities.Exceptions;
 using EDMSolution.ViewModels;
+using EDMSolution.ViewModels.Catalog.Products;
 using EDMSolution.ViewModels.Catalog.Products.Manage;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
@@ -24,6 +25,11 @@ namespace EDMSolution.Application.Catalog.Products
         {
             _context = context;
             _storageService = storageService;
+        }
+
+        public Task<int> AddImages(int productID, ProductImageViewModel productImage)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task AddViewCount(int productId)
@@ -48,7 +54,8 @@ namespace EDMSolution.Application.Catalog.Products
                 }
             };
             _context.Products.Add(product);
-            return await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
+            return product.ID;
         }
 
         public async Task<int> Delete(int productId)
@@ -82,6 +89,32 @@ namespace EDMSolution.Application.Catalog.Products
             return pageResult;
         }
 
+        public async Task<ProductViewModel> GetByIDProduct(int productID, int languageID)
+        {
+            var product = await _context.Products.FindAsync(productID);
+            var productTranslation = await _context.ProductTranslations.FirstOrDefaultAsync(x => x.ProductID == productID && x.LanguageID == languageID); 
+            var productViewModel = new ProductViewModel()
+            {
+                ID = product.ID,
+                CreatedDate = product.CreatedDate,
+                Description = productTranslation != null ? productTranslation.Description : null,
+                LanguageID = productTranslation.LanguageID,
+                Name = productTranslation != null ? productTranslation.Name : null,
+            };
+            return productViewModel;
+
+        }
+
+        public Task<List<ProductImageViewModel>> GetListImage(int productID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> RemoveImages(int imageId)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<int> Update(ProductUpdateRequest request)
         {
             var product = await _context.Products.FindAsync(request.ID);
@@ -92,6 +125,10 @@ namespace EDMSolution.Application.Catalog.Products
             productTranslation.MetaDescription = request.MetaDescription;
             productTranslation.Description = request.Description;
             return await _context.SaveChangesAsync();
+        }
+        public Task<int> UpdateImages(int imageId, ProductImageViewModel productImage)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<bool> UpdatePrice(int productId, decimal newPrice)

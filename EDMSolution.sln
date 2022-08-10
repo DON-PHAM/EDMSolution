@@ -14,11 +14,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EDMSolution.Data", "EDMSolu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EDMSolution.Application", "EDMSolution.Application\EDMSolution.Application.csproj", "{CF467D40-F888-4286-BE06-95C1D67C9026}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EDMSolution.Utilities", "EDMSolution.Utilities\EDMSolution.Utilities.csproj", "{2A0DC3D4-DA8E-4105-88AA-D6148ED16081}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EDMSolution.Utilities", "EDMSolution.Utilities\EDMSolution.Utilities.csproj", "{2A0DC3D4-DA8E-4105-88AA-D6148ED16081}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EDMSolution.ViewModels", "EDMSolution.ViewModels\EDMSolution.ViewModels.csproj", "{0BF5D0E5-80DD-46E8-8B25-1BFD392A1B5A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EDMSolution.ViewModels", "EDMSolution.ViewModels\EDMSolution.ViewModels.csproj", "{0BF5D0E5-80DD-46E8-8B25-1BFD392A1B5A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EDMSolution.BackendApi", "EDMSolution.BackendApi\EDMSolution.BackendApi.csproj", "{936DD05A-831F-4D26-AE92-D1B320627CBB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EDMSolution.BackendApi", "EDMSolution.BackendApi\EDMSolution.BackendApi.csproj", "{936DD05A-831F-4D26-AE92-D1B320627CBB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.Infrastructure", "1.Infrastructure", "{312F3736-251C-4B53-81FB-0FF9DDCF832C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.Domain", "2.Domain", "{E1B353E2-F419-4589-87F7-53008910CB55}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.Hosts", "3.Hosts", "{39D10C26-42E8-4F82-8E75-1C4B408E460D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +59,14 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5BB49349-FEDC-4D6B-B185-FC263F0F62D2} = {39D10C26-42E8-4F82-8E75-1C4B408E460D}
+		{C3E5662F-BF66-43C3-8000-A160B258FCC0} = {E1B353E2-F419-4589-87F7-53008910CB55}
+		{CF467D40-F888-4286-BE06-95C1D67C9026} = {E1B353E2-F419-4589-87F7-53008910CB55}
+		{2A0DC3D4-DA8E-4105-88AA-D6148ED16081} = {312F3736-251C-4B53-81FB-0FF9DDCF832C}
+		{0BF5D0E5-80DD-46E8-8B25-1BFD392A1B5A} = {312F3736-251C-4B53-81FB-0FF9DDCF832C}
+		{936DD05A-831F-4D26-AE92-D1B320627CBB} = {39D10C26-42E8-4F82-8E75-1C4B408E460D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4277D943-E39E-4914-AE8B-DBA92CC1E3C7}
