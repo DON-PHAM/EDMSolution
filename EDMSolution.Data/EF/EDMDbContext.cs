@@ -50,6 +50,7 @@ namespace EDMSolution.Data.EF
         public DbSet<AppRole> AppRoles;
         public DbSet<AppUser> AppUsers;
         public DbSet<Cart> Carts;
+        public DbSet<Category> Categories;
         public DbSet<CategoryTranslation> CategoryTranslations;
         public DbSet<Contact> Contacts;
         public DbSet<Feedback> Feedbacks;
@@ -57,10 +58,12 @@ namespace EDMSolution.Data.EF
         public DbSet<Language> Languages;
         public DbSet<Menu> Menus;
         public DbSet<MenuType> MenuTypes;
+        public DbSet<MenuTranslation> MenuTranslations;
         public DbSet<Order> Orders;
         public DbSet<OrderDetail> OrderDetails;
         public DbSet<Post> Posts;
         public DbSet<PostTag> PostTags;
+        public DbSet<PostTranslation> PostTranslations;
         public DbSet<Product> Products;
         public DbSet<ProductCategory> ProductCategories;
         public DbSet<ProductTranslation> ProductTranslations;

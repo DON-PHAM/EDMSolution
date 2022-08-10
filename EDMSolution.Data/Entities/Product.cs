@@ -9,11 +9,8 @@ namespace EDMSolution.Data.Entities
 {
     public class Product
     {
-        public int Id { set; get; }
-        public string Name { set; get; }
-        public string Alias { set; get; }
+        public int ID { set; get; }
         public string Code { set; get; }
-        public string Description { set; get; }
         public string Image { set; get; }
         public string MoreImage { set; get; }
         public decimal PromationPrice { set; get; }
@@ -27,10 +24,14 @@ namespace EDMSolution.Data.Entities
         public string CreatedBy { set; get; }
         public DateTime ModifiedDate { set; get; }
         public string ModifiedBy { set; get; }
-        public string MetaKeywords { set; get; }
-        public string MetaDescription { set; get; }
         public Status Status { set; get; }
         public int ViewCount { set; get; }
         public DateTime TopHot { set; get; }
+        public List<Order> Orders { set; get; }
+        public List<ProductTranslation> ProductTranslations { set; get; }
+        public List<Cart> Carts { set; get; }
+        public List<OrderDetail> OrderDetails { set; get; }
+        public ProductCategory ProductCategory { set; get; }
+
     }
 }

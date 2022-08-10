@@ -2,6 +2,7 @@
 using EDMSolution.Application.Dtos;
 using EDMSolution.Data.EF;
 using EDMSolution.Data.Entities;
+using EDMSolution.Utilities.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,14 @@ namespace EDMSolution.Application.Catalog.Products
             var product = new Product()
             {
                 Price = request.Price,
+                ProductTranslations = new List<ProductTranslation>()
+                {
+                    new ProductTranslation()
+                    {
+                        Name = request.Name,
+                        LanguageID = request.LanguageID,
+                    }
+                }
             };
             _context.Products.Add(product);
             return await _context.SaveChangesAsync();
@@ -37,7 +46,10 @@ namespace EDMSolution.Application.Catalog.Products
 
         public async Task<int> Delete(int productId)
         {
-            throw new NotImplementedException();
+            var product = await _context.Products.FindAsync(productId);
+            if (product == null) throw new EDMException($"Cannot find a product: {productId}");
+            _context.Products.Remove(product);
+            return await _context.SaveChangesAsync();
         }
 
         public async Task<List<ProductViewModel>>  GetAll()
@@ -47,7 +59,10 @@ namespace EDMSolution.Application.Catalog.Products
 
         public Task<PagedResult<ProductViewModel>> GetAllPaging(GetProductPagingRequest request)
         {
-            throw new NotImplementedException();
+            var query = from p in _context.Products
+                        join pt in _context.ProductTranslations on p.ID equals pt.ProductID
+                        select p;
+                        
         }
 
         public async Task<int> Update(ProductUpdateRequest request)

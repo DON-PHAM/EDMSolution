@@ -13,7 +13,7 @@ namespace EDMSolution.Data.Extensions
         public static void Seed(this ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<AppConfig>().HasData(
-              new AppConfig() { Id = 1, Name = "Name 1" });
+              new AppConfig() { ID = 1, Name = "Name 1" });
         }
     }
 }

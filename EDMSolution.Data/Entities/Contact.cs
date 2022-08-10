@@ -9,7 +9,7 @@ namespace EDMSolution.Data.Entities
 {
     public class Contact
     {
-        public int Id { set; get; }
+        public int ID { set; get; }
         public string Contents { set; get; }
         public Status Status { set; get; }
     }

@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace EDMSolution.Data.Entities
 {
-    public class Transaction
+    public class MenuTranslation
     {
         public int ID { set; get; }
         public string Name { set; get; }
+        public int LanguageID { set; get; }
     }
 }

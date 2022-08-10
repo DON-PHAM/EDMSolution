@@ -8,7 +8,7 @@ namespace EDMSolution.Data.Entities
 {
     public class Cart
     {
-        public int Id { set; get; }
+        public int ID { set; get; }
         public string ProductID { set; get; }
         public int Quantity { set; get; }
         public decimal Price { set; get; }

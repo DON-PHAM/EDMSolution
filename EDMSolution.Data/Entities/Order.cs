@@ -8,7 +8,9 @@ namespace EDMSolution.Data.Entities
 {
     public class Order
     {
-        public int Id { set; get; }
+        public int ID { set; get; }
         public string Name { set; get; }
+        public int ProductID { set; get; }
+        public Product Product { set; get; }
     }
 }

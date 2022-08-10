@@ -8,6 +8,14 @@ namespace EDMSolution.Application.Catalog.Products.Dtos
 {
     public class ProductUpdateRequest
     {
-        public int Id { set; get; }
+        public int ID { set; get; }
+        public string Name { set; get; }
+        public string Alias { set; get; }
+        public string Description { set; get; }
+        public string MetaKeywords { set; get; }
+        public string MetaDescription { set; get; }
+        public string LanguageID { set; get; }
+
+
     }
 }
