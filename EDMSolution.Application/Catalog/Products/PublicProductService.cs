@@ -17,7 +17,7 @@ namespace EDMSolution.Application.Catalog.Products
             _context = context;
         }
 
-        public Task<PagedResult<ProductViewModel>> GetAllByCategoryId(GetProductPagingRequest request)
+        public async Task<PagedResult<ProductViewModel>> GetAllByCategoryId(GetProductPagingRequest request)
         {
             throw new NotImplementedException();
         }

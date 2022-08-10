@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EDMSolution.Application\EDMSolution.Application.csproj" />
+    <ProjectReference Include="..\EDMSolution.Data\EDMSolution.Data.csproj" />
+    <ProjectReference Include="..\EDMSolution.Utilities\EDMSolution.Utilities.csproj" />
+    <ProjectReference Include="..\EDMSolution.ViewModels\EDMSolution.ViewModels.csproj" />
+  </ItemGroup>
+
+</Project>
