@@ -1,3 +1,5 @@
+using EDMSolution.Application.Catalog.Products;
+using EDMSolution.Application.Common;
 using EDMSolution.Data.EF;
 using EDMSolution.Utilities.Contants;
 using Microsoft.AspNetCore.Builder;
@@ -28,7 +30,18 @@ namespace EDMSolution.BackendApi
             services.AddDbContext<EDMDbContext>(opt =>
                 opt.UseSqlServer(Configuration.GetConnectionString(SystemContants.MainConnectionString))
             );
+            //Declare Dependency Injection
+            services.AddTransient<IStorageService, FileStorageService>();
+            services.AddTransient<IPublicProductService, PublicProductService>();
+            services.AddTransient<IManageProductService, ManageProductService>();
+
+
             services.AddControllersWithViews();
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("V1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Swagger EDM Solution", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +61,13 @@ namespace EDMSolution.BackendApi
 
             app.UseAuthorization();
 
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/V1/swagger.json", "Swagger DEMO V1");
+              
+            });
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
