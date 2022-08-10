@@ -10,5 +10,6 @@ namespace EDMSolution.Data.Entities
     {
         public int ID { set; get; }
         public string Name { set; get; }
+        public List<PostTag> PostTags { set; get; }
     }
 }

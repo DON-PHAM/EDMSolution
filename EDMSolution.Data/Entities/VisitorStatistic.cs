@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace EDMSolution.Data.Entities
 {
-    public class MenuType
+    public class VisitorStatistic
     {
         public int ID { set; get; }
-        public string Name { set; get; }
-        public List<Menu> Menus { set; get; }
+        public DateTime VistedDate { set; get; }
+        public string IPAddress { set; get; }
     }
 }

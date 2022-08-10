@@ -17,5 +17,6 @@ namespace EDMSolution.Data.Entities
         public DateTime ModifiedDate { set; get; }
         public string ModifiedBy { set; get; }
         public Status Status { set; get; }
+        public List<CategoryTranslation> CategoryTranslations;
     }
 }

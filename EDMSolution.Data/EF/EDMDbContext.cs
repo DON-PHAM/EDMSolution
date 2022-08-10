@@ -71,5 +71,6 @@ namespace EDMSolution.Data.EF
         public DbSet<Slide> Slides;
         public DbSet<Tag> Tags;
         public DbSet<Transaction> Transactions;
+        public DbSet<VisitorStatistic> VisitorStatistics;
     }
 }

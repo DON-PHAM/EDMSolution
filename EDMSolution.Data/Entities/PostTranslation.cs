@@ -8,6 +8,12 @@ namespace EDMSolution.Data.Entities
 {
     public class PostTranslation
     {
-
+        public int ID { set; get; }
+        public string Name { set; get; }
+        public int PostID { set; get; }
+        public string Description { set; get; }
+        public string Detail { set; get; }
+        public string MetaKeywords { set; get; }
+        public string MetaDescription { set; get; }
     }
 }

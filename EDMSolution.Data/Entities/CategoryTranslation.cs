@@ -16,5 +16,8 @@ namespace EDMSolution.Data.Entities
         public string SeoTitle { set; get; }
         public string MetaKeywords { set; get; }
         public string MetaDescription { set; get; }
+        public int LanguageID { set; get; }
+        public Category Category { set; get; }
+        public Language Language { set; get; }
     }
 }

@@ -27,7 +27,6 @@ namespace EDMSolution.Data.Entities
         public Status Status { set; get; }
         public int ViewCount { set; get; }
         public DateTime TopHot { set; get; }
-        public List<Order> Orders { set; get; }
         public List<ProductTranslation> ProductTranslations { set; get; }
         public List<Cart> Carts { set; get; }
         public List<OrderDetail> OrderDetails { set; get; }
