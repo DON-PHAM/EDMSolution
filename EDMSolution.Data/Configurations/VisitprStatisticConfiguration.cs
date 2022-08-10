@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace EDMSolution.Data.Configurations
 {
-    public class PostConfiguration : IEntityTypeConfiguration<Post>
+    public class VisitprStatisticConfiguration : IEntityTypeConfiguration<VisitorStatistic>
     {
-        public void Configure(EntityTypeBuilder<Post> builder)
+        public void Configure(EntityTypeBuilder<VisitorStatistic> builder)
         {
-            builder.ToTable("Posts");
+            builder.ToTable("VisitorStatistics");
             builder.HasKey(x => x.ID);
             builder.Property(x => x.ID).UseIdentityColumn();
         }

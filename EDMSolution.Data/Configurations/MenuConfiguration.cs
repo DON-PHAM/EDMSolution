@@ -13,7 +13,9 @@ namespace EDMSolution.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Menu> builder)
         {
-            throw new NotImplementedException();
+            builder.ToTable("Menus");
+            builder.HasKey(x => x.ID);
+            builder.Property(x => x.ID).UseIdentityColumn();
         }
     }
 }

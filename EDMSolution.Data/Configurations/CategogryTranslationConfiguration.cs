@@ -13,7 +13,10 @@ namespace EDMSolution.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<CategoryTranslation> builder)
         {
-            throw new NotImplementedException();
+            builder.ToTable("CategoryTranslations");
+            builder.HasKey(x => x.ID);
+            builder.Property(x => x.ID).UseIdentityColumn();
+            builder.Property(x => x.Name).IsRequired();
         }
     }
 }

@@ -9,13 +9,14 @@ using System.Threading.Tasks;
 
 namespace EDMSolution.Data.Configurations
 {
-    public class PostConfiguration : IEntityTypeConfiguration<Post>
+    public class CategoryConfiguration : IEntityTypeConfiguration<Category>
     {
-        public void Configure(EntityTypeBuilder<Post> builder)
+        public void Configure(EntityTypeBuilder<Category> builder)
         {
-            builder.ToTable("Posts");
+            builder.ToTable("Categories");
             builder.HasKey(x => x.ID);
             builder.Property(x => x.ID).UseIdentityColumn();
+
         }
     }
 }

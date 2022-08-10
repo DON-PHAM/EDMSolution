@@ -13,7 +13,9 @@ namespace EDMSolution.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<PostTag> builder)
         {
-            throw new NotImplementedException();
+            builder.ToTable("PostTags");
+            builder.HasKey(x => x.PostID);
+            builder.HasKey(x => x.TagID);
         }
     }
 }

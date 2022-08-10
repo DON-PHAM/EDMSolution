@@ -13,7 +13,9 @@ namespace EDMSolution.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Order> builder)
         {
-            throw new NotImplementedException();
+            builder.ToTable("Orders");
+            builder.HasKey(x => x.ID);
+            builder.Property(x => x.ID).UseIdentityColumn();
         }
     }
 }

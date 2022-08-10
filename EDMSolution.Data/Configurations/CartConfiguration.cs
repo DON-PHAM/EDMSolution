@@ -13,7 +13,9 @@ namespace EDMSolution.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Cart> builder)
         {
-            throw new NotImplementedException();
+            builder.ToTable("Carts");
+            builder.HasKey(x => x.ID);
+            builder.Property(x => x.Price).IsRequired();
         }
     }
 }

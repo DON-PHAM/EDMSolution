@@ -14,9 +14,10 @@ namespace EDMSolution.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<ProductCategory> builder)
         {
-            builder.ToTable("productcategories");
-            builder.HasKey(x => x.Id);
+            builder.ToTable("ProductCategories");
+            builder.HasKey(x => x.ID);
             builder.Property(x => x.Status).HasDefaultValue(Status.Active);
+            builder.Property(x => x.ID).UseIdentityColumn();
         }
     }
 }

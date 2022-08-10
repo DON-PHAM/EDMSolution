@@ -14,7 +14,7 @@ namespace EDMSolution.Data.Configurations
         public void Configure(EntityTypeBuilder<AppConfig> builder)
         {
             builder.ToTable("Appconfigs");
-            builder.HasKey(x => x.Id);
+            builder.HasKey(x => x.ID);
             //Tự tăng
             builder.Property(x => x.Id).UseIdentityColumn();
             builder.Property(x => x.Name).IsRequired(true);

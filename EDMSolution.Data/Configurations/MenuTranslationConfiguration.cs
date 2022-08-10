@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace EDMSolution.Data.Configurations
 {
-    public class PostConfiguration : IEntityTypeConfiguration<Post>
+    public class MenuTranslationConfiguration : IEntityTypeConfiguration<MenuTranslation>
     {
-        public void Configure(EntityTypeBuilder<Post> builder)
+        public void Configure(EntityTypeBuilder<MenuTranslation> builder)
         {
-            builder.ToTable("Posts");
+            builder.ToTable("MenuTranslations");
             builder.HasKey(x => x.ID);
             builder.Property(x => x.ID).UseIdentityColumn();
         }
