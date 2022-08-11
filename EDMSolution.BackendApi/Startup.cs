@@ -4,6 +4,7 @@ using EDMSolution.Application.System.Users;
 using EDMSolution.Data.EF;
 using EDMSolution.Data.Entities;
 using EDMSolution.Utilities.Contants;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -47,8 +48,6 @@ namespace EDMSolution.BackendApi
             services.AddTransient<SignInManager<AppUser>, SignInManager<AppUser>>();
             services.AddTransient<RoleManager<AppRole>, RoleManager<AppRole>>();
             services.AddTransient<IUserService, UserService>();
-
-            services.AddControllers();
 
             services.AddSwaggerGen(c =>
             {

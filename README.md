@@ -9,6 +9,8 @@
 - microsoft.entityframeworkcore.Sqlserver
 - microsoft.extensions.configuration.fileextensions
 - Microsoft.Extensions.Configuration.Json
+* Backend API
+-FluentValidation.AspNetCore
 ## How to configure and run
 
 ## How to contribute
