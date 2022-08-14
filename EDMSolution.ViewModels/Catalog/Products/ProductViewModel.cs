@@ -34,7 +34,7 @@ namespace EDMSolution.ViewModels
         public string Description { set; get; }
         public string MetaKeywords { set; get; }
         public string MetaDescription { set; get; }
-        public int LanguageID { set; get; }
+        public string LanguageCode { set; get; }
         public Product Product { set; get; }
         public Language Language { set; get; }
     }

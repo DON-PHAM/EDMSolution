@@ -15,5 +15,7 @@ namespace EDMSolution.Data.Entities
         public string Detail { set; get; }
         public string MetaKeywords { set; get; }
         public string MetaDescription { set; get; }
+        public string LanguageCode { set; get; }
+        public Post Post { set; get; }
     }
 }

@@ -20,8 +20,6 @@ namespace EDMSolution.Data.Entities
         public string PaymenMethod { set; get; }
         public string PaymentStatus { set; get; }
         public Status Status { set; get; }
-        
-        
-        public List<Order> Orders { set; get; }
+        public List<OrderDetail> OrderDetails { set; get; }
     }
 }

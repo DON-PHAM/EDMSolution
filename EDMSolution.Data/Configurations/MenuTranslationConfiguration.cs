@@ -16,6 +16,7 @@ namespace EDMSolution.Data.Configurations
             builder.ToTable("MenuTranslations");
             builder.HasKey(x => x.ID);
             builder.Property(x => x.ID).UseIdentityColumn();
+            
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using EDMSolution.ViewModels;
 using EDMSolution.ViewModels.Catalog.Products;
-using EDMSolution.ViewModels.Catalog.Products.Manage;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -14,11 +13,11 @@ namespace EDMSolution.Application.Catalog.Products
     {
         Task<int> Create(ProductCreateRequest request);
         Task<int> Update(ProductUpdateRequest request);
-        Task<ProductViewModel> GetByIDProduct(int productID,int languageID);
+        Task<ProductViewModel> GetByIDProduct(int productID,string LanguageCode);
         Task<bool> UpdatePrice(int productId, decimal newPrice);
         Task AddViewCount(int productId);
         Task<int> Delete(int productId);
-        Task<PagedResult<ProductViewModel>> GetAllPaging(GetProductPagingRequest request);
+        Task<PagedResult<ProductViewModel>> GetAllPaging(GetManageProductPaginRequest request);
         Task<int> AddImages(int productID, ProductImageViewModel productImage);
         Task<int> RemoveImages(int imageId);
         Task<int> UpdateImages(int imageId, ProductImageViewModel productImage);

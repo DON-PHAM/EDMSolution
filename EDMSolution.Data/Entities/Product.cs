@@ -15,7 +15,6 @@ namespace EDMSolution.Data.Entities
         public bool IncludedVAT { set; get; }
         public int Quantity { set; get; }
         public int CategoryID { set; get; }
-        public string Detail { set; get; }
         public int Warranty { set; get; }
         public decimal Price { set; get; }
         public DateTime CreatedDate { set; get; }

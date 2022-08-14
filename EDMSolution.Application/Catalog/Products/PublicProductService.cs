@@ -1,6 +1,6 @@
 ﻿using EDMSolution.Data.EF;
 using EDMSolution.ViewModels;
-using EDMSolution.ViewModels.Catalog.Products.Public;
+using EDMSolution.ViewModels.Catalog.Products;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -31,7 +31,7 @@ namespace EDMSolution.Application.Catalog.Products
             return data;
         }
 
-        public Task<PagedResult<ProductViewModel>> GetAllByCategoryId(GetProductPagingRequest request)
+        public Task<PagedResult<ProductViewModel>> GetAllByCategoryId(GetPublicProductPagingRequest request)
         {
             throw new NotImplementedException();
         }

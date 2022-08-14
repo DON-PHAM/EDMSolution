@@ -10,6 +10,7 @@ namespace EDMSolution.Data.Entities
     {
         public int ID { set; get; }
         public string Name { set; get; }
+        public string LanguageCode { set; get; }
         public bool IsDefault { set; get; }
     }
 }

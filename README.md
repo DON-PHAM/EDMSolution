@@ -23,3 +23,6 @@
 - Remove-migration
 
 ## DTO -> Data Transfer Object
+
+## Swagger test API 
+- Swashbuckle.AspNetCore -Version 5.5.0

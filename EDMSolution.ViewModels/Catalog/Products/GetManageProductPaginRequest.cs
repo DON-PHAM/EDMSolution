@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EDMSolution.ViewModels.Catalog.Products.Manage
+namespace EDMSolution.ViewModels.Catalog.Products
 {
-    public class GetProductPagingRequest : PagingRequestBase
+    public class GetManageProductPaginRequest : PagingRequestBase
     {
         public string keyword { set; get; }
         public List<int> CategoryIds { set; get; }

@@ -4,7 +4,6 @@ using EDMSolution.Data.Entities;
 using EDMSolution.Utilities.Exceptions;
 using EDMSolution.ViewModels;
 using EDMSolution.ViewModels.Catalog.Products;
-using EDMSolution.ViewModels.Catalog.Products.Manage;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -49,7 +48,7 @@ namespace EDMSolution.Application.Catalog.Products
                     new ProductTranslation()
                     {
                         Name = request.Name,
-                        LanguageID = request.LanguageID,
+                        LanguageCode = request.LanguageCode,
                     }
                 }
             };
@@ -65,7 +64,7 @@ namespace EDMSolution.Application.Catalog.Products
             _context.Products.Remove(product);
             return await _context.SaveChangesAsync();
         }
-        public async Task<PagedResult<ProductViewModel>> GetAllPaging(GetProductPagingRequest request)
+        public async Task<PagedResult<ProductViewModel>> GetAllPaging(GetManageProductPaginRequest request)
         {
             var query = from p in _context.Products
                         join pt in _context.ProductTranslations on p.ID equals pt.ProductID
@@ -79,7 +78,7 @@ namespace EDMSolution.Application.Catalog.Products
                             ID = x.p.ID,
                             Name = x.pt.Name,
                             Description = x.pt.Description,
-                            LanguageID = x.pt.LanguageID
+                            LanguageCode = x.pt.LanguageCode
                         }).ToListAsync();
             var pageResult = new PagedResult<ProductViewModel>()
             {
@@ -89,16 +88,16 @@ namespace EDMSolution.Application.Catalog.Products
             return pageResult;
         }
 
-        public async Task<ProductViewModel> GetByIDProduct(int productID, int languageID)
+        public async Task<ProductViewModel> GetByIDProduct(int productID, string LanguageCode)
         {
             var product = await _context.Products.FindAsync(productID);
-            var productTranslation = await _context.ProductTranslations.FirstOrDefaultAsync(x => x.ProductID == productID && x.LanguageID == languageID); 
+            var productTranslation = await _context.ProductTranslations.FirstOrDefaultAsync(x => x.ProductID == productID && x.LanguageCode == LanguageCode); 
             var productViewModel = new ProductViewModel()
             {
                 ID = product.ID,
                 CreatedDate = product.CreatedDate,
                 Description = productTranslation != null ? productTranslation.Description : null,
-                LanguageID = productTranslation.LanguageID,
+                LanguageCode = productTranslation.LanguageCode,
                 Name = productTranslation != null ? productTranslation.Name : null,
             };
             return productViewModel;
@@ -118,7 +117,7 @@ namespace EDMSolution.Application.Catalog.Products
         public async Task<int> Update(ProductUpdateRequest request)
         {
             var product = await _context.Products.FindAsync(request.ID);
-            var productTranslation = await _context.ProductTranslations.FirstOrDefaultAsync(x => x.ProductID == request.ID && x.LanguageID == request.LanguageID);
+            var productTranslation = await _context.ProductTranslations.FirstOrDefaultAsync(x => x.ProductID == request.ID && x.LanguageCode == request.LanguageCode);
             if (product == null || productTranslation == null) throw new EDMException($"Cannot find a product with ID: {request.ID}");
             productTranslation.Name = request.Name;
             productTranslation.MetaKeywords = request.MetaKeywords;

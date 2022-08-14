@@ -32,7 +32,7 @@ namespace EDMSolution.ViewModels
         public Status Status { set; get; }
         public int ViewCount { set; get; }
         public DateTime TopHot { set; get; }
-        public int LanguageID { set; get; }
+        public string LanguageCode { set; get; }
         public IFormFile ThumbnailImage { set; get; }
     }
 }

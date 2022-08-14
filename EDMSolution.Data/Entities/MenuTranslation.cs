@@ -11,7 +11,7 @@ namespace EDMSolution.Data.Entities
         public int ID { set; get; }
         public string Name { set; get; }
         public int MenuID { set; get; }
-        public int LanguageID { set; get; }
+        public string LanguageCode { set; get; }
         public Menu Menu { set; get; }
         public Language Language { set; get; }
     }

@@ -1,5 +1,5 @@
 ﻿using EDMSolution.ViewModels;
-using EDMSolution.ViewModels.Catalog.Products.Public;
+using EDMSolution.ViewModels.Catalog.Products;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +11,7 @@ namespace EDMSolution.Application.Catalog.Products
 {
     public interface IPublicProductService
     {
-        Task<PagedResult<ProductViewModel>> GetAllByCategoryId(GetProductPagingRequest request);
+        Task<PagedResult<ProductViewModel>> GetAllByCategoryId(GetPublicProductPagingRequest request);
         Task<List<ProductViewModel>> GetAll();
     }
 }

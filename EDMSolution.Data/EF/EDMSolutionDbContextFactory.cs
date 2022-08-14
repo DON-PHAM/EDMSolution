@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using EDMSolution.Utilities.Contants;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -17,9 +18,9 @@ namespace EDMSolution.Data.EF
         {
             IConfigurationRoot configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsetting.json")
+                .AddJsonFile("appsettings.json")
                 .Build();
-            var connectionString = configuration.GetConnectionString("EDMSolutionDb");
+            var connectionString = configuration.GetConnectionString(SystemContants.MainConnectionString);
             var optionsBuilder = new DbContextOptionsBuilder<EDMDbContext>();
             optionsBuilder.UseSqlServer(connectionString);
             return new EDMDbContext(optionsBuilder.Options);
