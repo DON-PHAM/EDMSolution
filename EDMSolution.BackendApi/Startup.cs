@@ -1,9 +1,13 @@
 using EDMSolution.Application.Catalog.Products;
 using EDMSolution.Data.EF;
 using EDMSolution.Utilities.Contants;
+using EDMSolution.ViewModels.System.Users;
+using FluentValidation;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -32,7 +36,7 @@ namespace EDMSolution.BackendApi
                 opt.UseSqlServer(Configuration.GetConnectionString(SystemContants.MainConnectionString))
                 );
             services.AddTransient<IPublicProductService, PublicProductService>();
-            
+            services.AddTransient<IValidator<LoginRequest>, LoginRequestValidator>();
             services.AddControllers();
             services.AddSwaggerGen(c => {
                 c.SwaggerDoc("V1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Swagger EDM Solution", Version = "v1" });
