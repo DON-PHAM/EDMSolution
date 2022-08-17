@@ -20,8 +20,20 @@ namespace EDMSolution.BackendApi.Controllers
         [HttpGet("getallproduct")]
         public async Task<IActionResult> GetAllProduct()
         {
-            var product = await _publicProductService.GetAll();
-            return Ok(product);
-        }
+            try
+            {
+                var product = await _publicProductService.GetAll();
+                if (product == null)
+                {
+                    return BadRequest();
+                }
+                return Ok(product);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            }
+            
     }
 }

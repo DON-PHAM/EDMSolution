@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace EDMSolution.ViewModels.Catalog.CategoryProduct
 {
-    public class CategoryProductPagingRequest
+    public class CategoryProductPagingRequest : PagingRequestBase
     {
+
     }
 }

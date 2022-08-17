@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EDMSolution.Data.Migrations
 {
     [DbContext(typeof(EDMDbContext))]
-    [Migration("20220813031118_Inital")]
+    [Migration("20220817094831_Inital")]
     partial class Inital
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

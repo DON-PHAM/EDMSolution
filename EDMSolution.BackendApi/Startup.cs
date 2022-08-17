@@ -67,7 +67,7 @@ namespace EDMSolution.BackendApi
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/V1/swagger.json", "API EDM");
+                c.SwaggerEndpoint("/Swagger/V1/swagger.json", "API EDM");
             });
 
 

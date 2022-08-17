@@ -8,6 +8,6 @@ namespace EDMSolution.Application.Catalog.CategoryProduct
 {
     public interface ICategoryProduct
     {
-        Task
+    
     }
 }

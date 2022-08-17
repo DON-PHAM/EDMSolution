@@ -5,3 +5,4 @@
   </PropertyGroup>
 
 </Project>
+return new ApiSuccessResult<UserVm>(userVm);
