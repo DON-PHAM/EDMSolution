@@ -33,7 +33,7 @@ namespace EDMSolution.BackendApi
                 );
             services.AddTransient<IPublicProductService, PublicProductService>();
             
-            services.AddControllersWithViews();
+            services.AddControllers();
             services.AddSwaggerGen(c => {
                 c.SwaggerDoc("V1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Swagger EDM Solution", Version = "v1" });
             });
