@@ -11,6 +11,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EDMSolution.Data\EDMSolution.Data.csproj" />
+    <ProjectReference Include="..\EDMSolution.Utilities\EDMSolution.Utilities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Catalog\" />
   </ItemGroup>
 
 </Project>

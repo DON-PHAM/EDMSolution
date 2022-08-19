@@ -16,4 +16,8 @@
     <ProjectReference Include="..\EDMSolution.ViewModels\EDMSolution.ViewModels.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Catalog\" />
+  </ItemGroup>
+
 </Project>

@@ -14,7 +14,11 @@ namespace EDMSolution.Data.Configurations
         public void Configure(EntityTypeBuilder<AppRole> builder)
         {
             builder.ToTable("AppRoles");
-            builder.Property(x => x.Description).HasMaxLength(200).IsRequired();
+            builder.Property(x => x.Name).HasMaxLength(255);
+            builder.Property(x => x.Description).IsRequired(false).HasMaxLength(5000);
+            builder.Property(x => x.IdParent).IsRequired(false);
+            builder.Property(x => x.DateCreate).IsRequired(false);
+            builder.Property(x => x.DateUpdate).IsRequired(false);
         }
     }
 }

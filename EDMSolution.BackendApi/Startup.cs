@@ -1,5 +1,8 @@
 using EDMSolution.Application.Catalog.Products;
+using EDMSolution.Application.Common;
+using EDMSolution.Application.System.Users;
 using EDMSolution.Data.EF;
+using EDMSolution.Data.Entities;
 using EDMSolution.Utilities.Contants;
 using EDMSolution.ViewModels.System.Users;
 using FluentValidation;
@@ -35,7 +38,23 @@ namespace EDMSolution.BackendApi
                 opt =>
                 opt.UseSqlServer(Configuration.GetConnectionString(SystemContants.MainConnectionString))
                 );
-            services.AddTransient<IPublicProductService, PublicProductService>();
+            services.AddTransient<IUserService, UserService>();
+            services.AddIdentity<AppUser, AppRole>()
+                .AddEntityFrameworkStores<DPIDbContext>()
+                .AddDefaultTokenProviders();
+
+            //Declare DI
+            services.AddTransient<IStorageService, FileStorageService>();
+
+            services.AddTransient<UserManager<AppUser>, UserManager<AppUser>>();
+            services.AddTransient<SignInManager<AppUser>, SignInManager<AppUser>>();
+            services.AddTransient<RoleManager<AppRole>, RoleManager<AppRole>>();
+            services.AddTransient<ILanguageService, LanguageService>();
+
+            services.AddTransient<IRoleService, RoleService>();
+            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IConfigTimeReportService, ConfigTimeReportService>();
+            services.AddTransient<IDapperr, Dapperr>();
             services.AddTransient<IValidator<LoginRequest>, LoginRequestValidator>();
             services.AddControllers();
             services.AddSwaggerGen(c => {

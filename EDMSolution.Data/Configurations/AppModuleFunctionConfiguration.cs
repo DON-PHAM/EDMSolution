@@ -9,13 +9,14 @@ using System.Threading.Tasks;
 
 namespace EDMSolution.Data.Configurations
 {
-    public class AppUserConfiguration : IEntityTypeConfiguration<AppUser>
+    public class AppModuleFunctionConfiguration : IEntityTypeConfiguration<AppModuleFunction>
     {
-        public void Configure(EntityTypeBuilder<AppUser> builder)
+        public void Configure(EntityTypeBuilder<AppModuleFunction> builder)
         {
-            builder.ToTable("AppUsers");
-            builder.Property(x => x.FullName).IsRequired().HasMaxLength(200);
-            builder.Property(x => x.Dob).IsRequired();
+            builder.ToTable("AppModuleFunctions");
+
+            builder.HasKey(x => x.Id);
+            builder.Property(x => x.Id).UseIdentityColumn();
         }
     }
 }

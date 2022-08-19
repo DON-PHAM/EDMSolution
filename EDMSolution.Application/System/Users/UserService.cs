@@ -1,7 +1,11 @@
-﻿using EDMSolution.Data.Entities;
+﻿using EDMSolution.Data.EF;
+using EDMSolution.Data.Entities;
+using EDMSolution.Data.Enums;
 using EDMSolution.Utilities.Exceptions;
+using EDMSolution.ViewModels.Common;
 using EDMSolution.ViewModels.System.Users;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -20,40 +24,36 @@ namespace EDMSolution.Application.System.Users
         private readonly SignInManager<AppUser> _signInManager;
         private readonly RoleManager<AppRole> _roleManager;
         private readonly IConfiguration _config;
-        public UserService(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager,RoleManager<AppRole> roleManager,IConfiguration config)
+        public readonly EDMDbContext _context;
+        public UserService(EDMDbContext context, UserManager<AppUser> userManager,
+            SignInManager<AppUser> signInManager,
+            RoleManager<AppRole> roleManager,
+            IConfiguration config)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
             _config = config;
+            _context = context;
         }
-        public async Task<string> Authencate(LoginRequest request)
+        public async Task<ApiResult<string>> Authencate(LoginRequest request)
         {
-            var user = await _userManager.FindByIdAsync(request.UserName);
-            if (user == null) return null;
-            var result = await _signInManager.PasswordSignInAsync(user,request.Password,request.RememberMe,true);
-            if(!result.Succeeded)
+            try
             {
-                return null;
+                var domain = await _context.Tb_DonViSuDungs.FirstAsync(x => x.TenMienRieng == request.Domain);
+                var user = await _userManager.Users.FirstAsync(x => x.UserName.Trim().ToUpper() == request.UserName.Trim().ToUpper() && x.MaDonViSuDung == domain.Id);
+                if (user == null) return new ApiErrorResult<string>("Tài khoản không tồn tại");
+                if(user.Status != Status.Active)
+                {
+                    return new ApiErrorResult<string>("Tài khoản chưa được kích hoạt");
+                }
+                var result = await _signInManager.PasswordSignInAsync(user, request.Password, request.RememberMe, true);
+                
             }
-            var roles = _userManager.GetRolesAsync(user);
-            var claims = new[]
+            catch(Exception ex)
             {
-                new Claim(ClaimTypes.Email,user.Email),
-                new Claim(ClaimTypes.GivenName,user.FirstName),
-                new Claim(ClaimTypes.Role,string.Join(";",roles))
-            };
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Tokens:Key"]));
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-            var token = new JwtSecurityToken(
-                _config["Tokens:Issuer"],
-                _config["Tokens:Issuer"],
-                claims,
-                expires: DateTime.Now.AddHours(3),
-                signingCredentials: creds
-                );
-            return new JwtSecurityTokenHandler().WriteToken(token);
-
+                return new ApiErrorResult<string>(ex.Message);
+            }
                 
         }
 
@@ -73,5 +73,6 @@ namespace EDMSolution.Application.System.Users
             }
             return false;
         }
+
     }
 }

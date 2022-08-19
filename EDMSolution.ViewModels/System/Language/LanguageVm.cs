@@ -4,15 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EDMSolution.Data.Entities
+namespace EDMSolution.ViewModels.System.Language
 {
-    public class Language
+    public class LanguageVm
     {
         public string Id { get; set; }
 
         public string Name { get; set; }
 
         public bool IsDefault { get; set; }
-        public Nullable<long> MaDonViSuDung { get; set; }
     }
 }

@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 
 namespace EDMSolution.Data.Entities
 {
-    public class AppConfig
+    //Chuc Nang
+    public class AppFunction
     {
-        public string Key { set; get; }
-        public string Value { set; get; }
+        public long Id { set; get; }
+        public string Name { set; get; }
+        public Status Status { set; get; }
         public Nullable<long> MaDonViSuDung { set; get; }
     }
 }
