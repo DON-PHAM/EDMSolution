@@ -21,7 +21,16 @@ namespace EDMSolution.Data.EF
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //Config using Fluent API
-            
+            modelBuilder.ApplyConfiguration(new AppConfigConfiguration());
+            modelBuilder.ApplyConfiguration(new AppFunctionConfiguration());
+            modelBuilder.ApplyConfiguration(new AppModuleConfiguration());
+            modelBuilder.ApplyConfiguration(new AppModuleFunctionConfiguration());
+            modelBuilder.ApplyConfiguration(new AppPermissionConfiguration());
+            modelBuilder.ApplyConfiguration(new AppRoleConfiguration());
+            modelBuilder.ApplyConfiguration(new AppUserConfiguration());
+            modelBuilder.ApplyConfiguration(new DonViSuDung_ModuleConfiguration());
+            modelBuilder.ApplyConfiguration(new LanguageConfiguraion());
+            modelBuilder.ApplyConfiguration(new Tb_DonViSuDungConfiguration());
             
 
             modelBuilder.Entity<IdentityUserClaim <Guid>>().ToTable("AppUserClaims");

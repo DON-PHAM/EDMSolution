@@ -1,4 +1,3 @@
-using EDMSolution.Application.Catalog.Products;
 using EDMSolution.Application.Common;
 using EDMSolution.Application.System.Users;
 using EDMSolution.Data.EF;
@@ -6,7 +5,6 @@ using EDMSolution.Data.Entities;
 using EDMSolution.Utilities.Contants;
 using EDMSolution.ViewModels.System.Users;
 using FluentValidation;
-using Microsoft.AspNet.Identity;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -19,6 +17,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EDMSolution.Application.System.Roles;
+using EDMSolution.Application.System.Language;
 
 namespace EDMSolution.BackendApi
 {
@@ -40,7 +40,7 @@ namespace EDMSolution.BackendApi
                 );
             services.AddTransient<IUserService, UserService>();
             services.AddIdentity<AppUser, AppRole>()
-                .AddEntityFrameworkStores<DPIDbContext>()
+                .AddEntityFrameworkStores<EDMDbContext>()
                 .AddDefaultTokenProviders();
 
             //Declare DI
@@ -53,8 +53,8 @@ namespace EDMSolution.BackendApi
 
             services.AddTransient<IRoleService, RoleService>();
             services.AddTransient<IUserService, UserService>();
-            services.AddTransient<IConfigTimeReportService, ConfigTimeReportService>();
-            services.AddTransient<IDapperr, Dapperr>();
+            //services.AddTransient<IConfigTimeReportService, ConfigTimeReportService>();
+            //services.AddTransient<IDapperr, Dapperr>();
             services.AddTransient<IValidator<LoginRequest>, LoginRequestValidator>();
             services.AddControllers();
             services.AddSwaggerGen(c => {

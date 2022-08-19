@@ -5,6 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Catalog\**" />
+    <EmbeddedResource Remove="Catalog\**" />
+    <None Remove="Catalog\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.20" />
 	  <FrameworkReference Include="Microsoft.AspNetCore.App" />
@@ -14,10 +20,6 @@
     <ProjectReference Include="..\EDMSolution.Data\EDMSolution.Data.csproj" />
     <ProjectReference Include="..\EDMSolution.Utilities\EDMSolution.Utilities.csproj" />
     <ProjectReference Include="..\EDMSolution.ViewModels\EDMSolution.ViewModels.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Catalog\" />
   </ItemGroup>
 
 </Project>

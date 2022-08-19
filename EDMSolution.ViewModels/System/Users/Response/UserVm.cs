@@ -20,5 +20,6 @@ namespace EDMSolution.ViewModels.System.Users.Response
         public string Avata { set; get; }
         public IFormFile FormFile { set; get; }
         public Status Status { set; get; }
+        public string Token { set; get; }
     }
 }

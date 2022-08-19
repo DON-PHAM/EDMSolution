@@ -5,17 +5,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentValidation" Version="11.2.0" />
+    <Compile Remove="Catalog\**" />
+    <EmbeddedResource Remove="Catalog\**" />
+    <None Remove="Catalog\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.2.1" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\EDMSolution.Data\EDMSolution.Data.csproj" />
     <ProjectReference Include="..\EDMSolution.Utilities\EDMSolution.Utilities.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Catalog\" />
   </ItemGroup>
 
 </Project>
