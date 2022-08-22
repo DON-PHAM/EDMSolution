@@ -1,5 +1,5 @@
 ﻿using EDMSolution.Application.System.Users;
-using EDMSolution.ViewModels.System.Users;
+using EDMSolution.ViewModels.System.Users.Request;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -33,20 +33,20 @@ namespace EDMSolution.BackendApi.Controllers
             }
             return Ok(result);
         }
-        [HttpPost]
-        [AllowAnonymous]
-        public async Task<IActionResult> Register([FromBody] RegisterRequest request)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
+        //[HttpPost]
+        //[AllowAnonymous]
+        //public async Task<IActionResult> Register([FromBody] RegisterRequest request)
+        //{
+        //    if (!ModelState.IsValid)
+        //        return BadRequest(ModelState);
 
-            var result = await _userService.Register(request);
-            if (!result.IsSuccessed)
-            {
-                return BadRequest(result);
-            }
-            return Ok(result);
-        }
+        //    var result = await _userService.Register(request);
+        //    if (!result.IsSuccessed)
+        //    {
+        //        return BadRequest(result);
+        //    }
+        //    return Ok(result);
+        //}
 
 
     }

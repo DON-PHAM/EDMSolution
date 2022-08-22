@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EDMSolution.ViewModels.System.Users
+namespace EDMSolution.ViewModels.System.Users.Request
 {
     public class LoginRequest
     {

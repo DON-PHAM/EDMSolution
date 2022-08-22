@@ -19,6 +19,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using EDMSolution.Application.System.Roles;
 using EDMSolution.Application.System.Language;
+using FluentValidation.AspNetCore;
+using EDMSolution.ViewModels.System.Users.Validations;
 
 namespace EDMSolution.BackendApi
 {
@@ -45,18 +47,16 @@ namespace EDMSolution.BackendApi
 
             //Declare DI
             services.AddTransient<IStorageService, FileStorageService>();
-
             services.AddTransient<UserManager<AppUser>, UserManager<AppUser>>();
             services.AddTransient<SignInManager<AppUser>, SignInManager<AppUser>>();
             services.AddTransient<RoleManager<AppRole>, RoleManager<AppRole>>();
             services.AddTransient<ILanguageService, LanguageService>();
-
             services.AddTransient<IRoleService, RoleService>();
             services.AddTransient<IUserService, UserService>();
             //services.AddTransient<IConfigTimeReportService, ConfigTimeReportService>();
             //services.AddTransient<IDapperr, Dapperr>();
-            services.AddTransient<IValidator<LoginRequest>, LoginRequestValidator>();
-            services.AddControllers();
+            //services.AddTransient<IValidator<LoginRequest>, LoginRequestValidator>();
+            services.AddControllers().AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<LoginRequestValidator>());
             services.AddSwaggerGen(c => {
                 c.SwaggerDoc("V1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Swagger EDM Solution", Version = "v1" });
             });

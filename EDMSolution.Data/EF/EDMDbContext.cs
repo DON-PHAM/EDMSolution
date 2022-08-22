@@ -42,16 +42,16 @@ namespace EDMSolution.Data.EF
             modelBuilder.Seed();
             //base.OnModelCreating(modelBuilder);
         }
-        public DbSet<AppConfig> AppConfigs;
-        public DbSet<AppFunction> AppFunctions;
-        public DbSet<AppModule> AppModules;
-        public DbSet<AppModuleFunction> ModuleFunctions;
-        public DbSet<AppPermission> AppPermissions;
-        public DbSet<DonViSuDung_Module> DonViSuDung_Modules;
-        public DbSet<Language> Languages;
-        public DbSet<Tb_DonViSuDung> Tb_DonViSuDungs;
-        public DbSet<AppRole> AppRoles;
-        public DbSet<AppUser> AppUsers;
-        
+        public DbSet<AppConfig> AppConfigs { get; set; }
+        public DbSet<AppFunction> AppFunctions { get; set; }
+        public DbSet<AppModule> AppModules { get; set; }
+        public DbSet<AppModuleFunction> ModuleFunctions { get; set; }
+        public DbSet<AppPermission> AppPermissions { get; set; }
+        public DbSet<DonViSuDung_Module> DonViSuDung_Modules { get; set; }
+        public DbSet<Language> Languages { get; set; }
+        public DbSet<Tb_DonViSuDung> Tb_DonViSuDungs { get; set; }
+        public DbSet<AppRole> AppRoles { get; set; }
+        public DbSet<AppUser> AppUsers { get; set; }
+
     }
 }
