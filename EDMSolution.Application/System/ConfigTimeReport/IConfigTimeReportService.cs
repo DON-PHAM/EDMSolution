@@ -1,5 +1,6 @@
 ﻿using EDMSolution.ViewModels.Common;
 using EDMSolution.ViewModels.System.ConfigTimeReport;
+using EDMSolution.ViewModels.System.ConfigTimeReport.Request;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +11,8 @@ namespace EDMSolution.Application.System.ConfigTimeReport
 {
     public interface IConfigTimeReportService
     {
-        //Task<ApiResult<ConfigTimeReportVm>> GetConfigTimeReport();
+        Task<ApiResult<ConfigTimeReportVm>> GetConfigTimeReport();
 
-        //Task<ApiResult<bool>> Save(ConfigTimeReportRequest configTimeReportRequest);
+        Task<ApiResult<bool>> Save(ConfigTimeReportRequest configTimeReportRequest);
     }
 }

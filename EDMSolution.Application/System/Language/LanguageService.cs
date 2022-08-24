@@ -25,13 +25,21 @@ namespace EDMSolution.Application.System.Language
 
         public async Task<ApiResult<List<LanguageVm>>> GetAll()
         {
-            var languages = await _context.Languages.Select(x => new LanguageVm()
+            try
             {
-                Id = x.Id,
-                Name = x.Name,
-                IsDefault = x.IsDefault
-            }).ToListAsync();
-            return new ApiSuccessResult<List<LanguageVm>>(languages);
+                var languages = await _context.Languages.Select(x => new LanguageVm()
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    IsDefault = x.IsDefault
+                }).ToListAsync();
+                return new ApiSuccessResult<List<LanguageVm>>(languages);
+            }
+            catch(Exception ex)
+            {
+                return new ApiErrorResult<List<LanguageVm>>(ex.Message);
+            }
+            
         }
     }
 }

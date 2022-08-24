@@ -80,6 +80,9 @@ namespace EDMSolution.Application.System.Users
                 var _res = new UserVm()
                 {
                     FullName = user.FullName,
+                    Avata = user.Avata,
+                    Dob = user.Dob,
+                    Status = user.Status,
                     Token = new JwtSecurityTokenHandler().WriteToken(token)
                 };
                 return new ApiSuccessResult<UserVm>(_res);

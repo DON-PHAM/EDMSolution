@@ -22,7 +22,6 @@
 
   <ItemGroup>
     <Folder Include="System\ConfigTimeReport\Response\" />
-    <Folder Include="System\ConfigTimeReport\Request\" />
   </ItemGroup>
 
 </Project>
