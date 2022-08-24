@@ -30,6 +30,7 @@ namespace EDMSolution.BackendApi
 {
     public class Startup
     {
+        private readonly string _policyName = "CorsPolicy";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -60,6 +61,16 @@ namespace EDMSolution.BackendApi
             services.AddTransient<IConfigTimeReportService, ConfigTimeReportService>();
             //services.AddTransient<IDapperr, Dapperr>();
             //services.AddTransient<IValidator<LoginRequest>, LoginRequestValidator>();
+            services.AddCors(opt =>
+            {
+                opt.AddPolicy(name: _policyName, builder =>
+                {
+                    builder.AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                });
+            });
+
             services.AddControllers().AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<LoginRequestValidator>());
             services.AddSwaggerGen(c => {
                 c.SwaggerDoc("V1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Swagger EDM Solution", Version = "v1" });
@@ -117,6 +128,7 @@ namespace EDMSolution.BackendApi
 
                 };
             });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -138,6 +150,7 @@ namespace EDMSolution.BackendApi
 
             app.UseAuthentication();
             app.UseRouting();
+            app.UseCors(_policyName);
             app.UseAuthorization();
 
             app.UseSwagger();
